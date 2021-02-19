@@ -30,21 +30,27 @@ class NetworkHelper {
     }
 }
 
+
+protocol OAthNetworkingService {
+    func loadToken(withURL url: URL, tokenData: TokenData, completion: @escaping ((Result<TokenDataResponse, Error>)) -> Void)
+}
+
+
 class OAthService {
     // TODO: create keychain wrapper
     // make private
     var state: String?
     private var onAuthenticationResult: ((Result<String, Error>) -> Void)?
-    private var oAthNetworkingService: OAthNetworkngService
+    private var oAthNetworkingService: OAthNetworkingService
     
-    init(oAthNetworkingService: OAthNetworkngService) {
-        self.oAthNetworkService = oAthNetworkingService
+    init(oAthNetworkingService: OAthNetworkingService) {
+        self.oAthNetworkingService = oAthNetworkingService
     }
     
     //TODO: change this move state
-    func exchangeCodeForToken(url: URL, complition: @escaping (Result<String, Error>) -> Void) {
+    func exchangeCodeForToken(url: URL, completion: @escaping (Result<String, Error>) -> Void) {
         guard let code = getCodeFromUrl(url: url), let state = state else {
-            return complition(.failure(NetworkError.badURLResponse))
+            return completion(.failure(NetworkError.badURLResponse))
         }
         let tokenData = TokenData(clientId: Constants.clientID.rawValue,
                                   clientSecret: Constants.clientSecret.rawValue,
@@ -52,13 +58,14 @@ class OAthService {
                                   scope: "repo",
                                   redirectUrl: Constants.redirectURI.rawValue,
                                   state: state)
-        let urlForToken =
-        oAthNetworkingService.loadToken(tokenData: tokenData) { result in
+        guard let url = URLManager.getGithubURL() else { return completion(.failure(NetworkError.badURL)) }
+        oAthNetworkingService.loadToken(withURL: url, tokenData: tokenData) { result in
             switch result {
             case .success(let tokenDataResponse):
                 print("Token: \(tokenDataResponse.accessToken)")
-                complition(.success(tokenDataResponse.accessToken))
+                completion(.success(tokenDataResponse.accessToken))
             case .failure(let error):
+                completion(.failure(error))
                 print(error)
             }      
         }
@@ -71,13 +78,15 @@ class OAthService {
 }
 
 
-extension Networking: OAthNetworkngService {
-    func loadToken(withURL url: URL, tokenData: TokenData, type:  complition: @escaping ((Result<TokenDataResponse, Error>)) -> Void) {
-        guard let url = URLManager.getGithubURL() else { complition(.failure(NetworkError.badURL)) }
-        upload(withURL: url, withData: tokenData) { result in
+extension Networking: OAthNetworkingService {
+    
+    func loadToken(withURL url: URL, tokenData: TokenData, completion: @escaping (Result<TokenDataResponse, Error>) -> Void) {
+        upload(withURL: url, withData: tokenData, type: TokenDataResponse.self) { result in
             switch result {
-            case .success(let data):
-                complition
+            case .success(let tokenDataResponse):
+                completion(.success(tokenDataResponse))
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }

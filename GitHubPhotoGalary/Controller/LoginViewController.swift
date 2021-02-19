@@ -8,6 +8,7 @@
 import UIKit
 import WebKit
 
+
 //todo: move to another module
 enum Constants: String {
     case clientID = "6c3087837186b7a049a1"
@@ -16,7 +17,9 @@ enum Constants: String {
     case scope = "repo"
 }
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, Alerting {
+    //todo replace to keyChainWrapper
+    private var token: String?
     private var oAthService: OAthService
     private let webView: WKWebView = {
         let prefs = WKWebpagePreferences()
@@ -39,8 +42,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(webView)
-        webView.isHidden = true
-        launchWebViewDelegation()
+        launchWebView()
     }
   
     override func viewDidLayoutSubviews() {
@@ -52,21 +54,13 @@ class LoginViewController: UIViewController {
         webView.isHidden = false
         // todo: move to some network helper
         oAthService.state = UUID().uuidString
-           var myURL = URLComponents()
-            myURL.scheme = "https"
-            myURL.host = "github.com"
-            myURL.path = "/login/oauth/authorize"
-            myURL.queryItems = [
-                URLQueryItem(name: "client_id", value: Constants.clientID.rawValue),
-                URLQueryItem(name: "redirect_uri", value: Constants.redirectURI.rawValue),
-                URLQueryItem(name: "scope", value: Constants.scope.rawValue),
-                URLQueryItem(name: "state", value: oAthService.state)
-            ]
-            // TODO: not force unwraping
-            let myRequest = URLRequest(url: myURL.url!)
-                
-            webView.load(myRequest)
+        guard let state = oAthService.state, let url = URLManager.getGithubURL(state: state) else {
+            showErrorAlert(from: self, title: "Ooops", message: "Something wrong")
+            return
         }
+        let myRequest = URLRequest(url: url)
+        webView.load(myRequest)
+    }
 
     @IBAction func pressedLoginButton(_ sender: Any) {
         authorizeApp()
@@ -75,7 +69,8 @@ class LoginViewController: UIViewController {
 
 private extension LoginViewController {
     
-    func launchWebViewDelegation() {
+    func launchWebView() {
+        webView.isHidden = true
         webView.navigationDelegate = self
     }
 }
@@ -84,24 +79,26 @@ extension LoginViewController: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         // githubphotogalary://authentication?code=3892207108d306ecdba8&state=A86A82D1-C791-4700-AE84-6D48AA97AC5B
-        if let url = navigationAction.request.url {
-            if url.absoluteString.contains(Constants.redirectURI.rawValue.lowercased()), url.absoluteString.contains("code") {
-                print("fsafsdfsa")
-                oAthService.exchangeCodeForToken(url: url) { result in
-                    switch result {
-                    case .success(let token):
-                        print("URA toke" + token)
-                        
-                    case .failure(let error):
-                        print("Fuck error \(error)")
-                    }
+        guard let url = navigationAction.request.url else { decisionHandler(.allow); return }
+        if url.absoluteString.contains(Constants.redirectURI.rawValue.lowercased()), url.absoluteString.contains("code") {
+            oAthService.exchangeCodeForToken(url: url) { result in
+                switch result {
+                case .success(let token):
+                    self.token = token
+                    print("URA toke" + token)
+                    decisionHandler(.cancel)
+                    self.showErrorAlert(from: self, title: "token", message: token)
+                    webView.isHidden = true
+                case .failure(let error):
+                    self.showErrorAlert(from: self, title: "Error", message: error.localizedDescription)
+                    webView.isHidden = true
+                    print("Fuck error \(error)")
+                }
             }
-            decisionHandler(.allow)
-            
         }
         else {
             decisionHandler(.allow)
         }
     }
-  }
 }
+
