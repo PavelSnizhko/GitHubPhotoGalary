@@ -8,19 +8,11 @@
 import UIKit
 import WebKit
 
-
-//todo: move to another module
-enum Constants: String {
-    case clientID = "6c3087837186b7a049a1"
-    case clientSecret = "4e649b162128471bc27f8357852ac48a668ac901"
-    case redirectURI = "GitHubPhotoGalary://authentication"
-    case scope = "repo"
-}
-
 class LoginViewController: UIViewController, Alerting {
     //todo replace to keyChainWrapper
     private var token: String?
     private var oAthService: OAthService
+    private var imageLoader: ImageLoaderManager
     private let webView: WKWebView = {
         let prefs = WKWebpagePreferences()
         prefs.allowsContentJavaScript = true
@@ -30,8 +22,10 @@ class LoginViewController: UIViewController, Alerting {
         return webView
     }()
 
-    init(oAthService: OAthService) {
+    //move image loader to another class 
+    init(oAthService: OAthService, imageLoader: ImageLoaderManager) {
         self.oAthService = oAthService
+        self.imageLoader = imageLoader
         super.init(nibName: nil, bundle: nil)
     }
    
@@ -80,12 +74,13 @@ extension LoginViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         // githubphotogalary://authentication?code=3892207108d306ecdba8&state=A86A82D1-C791-4700-AE84-6D48AA97AC5B
         guard let url = navigationAction.request.url else { decisionHandler(.allow); return }
-        if url.absoluteString.contains(Constants.redirectURI.rawValue.lowercased()), url.absoluteString.contains("code") {
+        if url.absoluteString.contains(GithubConstants.redirectURI.rawValue.lowercased()), url.absoluteString.contains("code") {
             oAthService.exchangeCodeForToken(url: url) { result in
                 switch result {
                 case .success(let token):
                     self.token = token
                     print("URA toke" + token)
+                    self.imageLoader.getImages(token: token)
                     decisionHandler(.cancel)
                     self.showErrorAlert(from: self, title: "token", message: token)
                     webView.isHidden = true

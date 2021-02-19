@@ -52,11 +52,11 @@ class OAthService {
         guard let code = getCodeFromUrl(url: url), let state = state else {
             return completion(.failure(NetworkError.badURLResponse))
         }
-        let tokenData = TokenData(clientId: Constants.clientID.rawValue,
-                                  clientSecret: Constants.clientSecret.rawValue,
+        let tokenData = TokenData(clientId: GithubConstants.clientID.rawValue,
+                                  clientSecret: GithubConstants.clientSecret.rawValue,
                                   code: code,
                                   scope: "repo",
-                                  redirectUrl: Constants.redirectURI.rawValue,
+                                  redirectUrl: GithubConstants.redirectURI.rawValue,
                                   state: state)
         guard let url = URLManager.getGithubURL() else { return completion(.failure(NetworkError.badURL)) }
         oAthNetworkingService.loadToken(withURL: url, tokenData: tokenData) { result in
@@ -78,6 +78,7 @@ class OAthService {
 }
 
 
+// ask is it okey to have method like that or move to another class because it's like in presentation was
 extension Networking: OAthNetworkingService {
     
     func loadToken(withURL url: URL, tokenData: TokenData, completion: @escaping (Result<TokenDataResponse, Error>) -> Void) {

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AE3C118325DE6CB70093EB14 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C118225DE6CB70093EB14 /* URL.swift */; };
-		AE3C118625DE6FB60093EB14 /* OAthNetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C118525DE6FB60093EB14 /* OAthNetworkingService.swift */; };
+		AE3C118625DE6FB60093EB14 /* TokenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C118525DE6FB60093EB14 /* TokenData.swift */; };
 		AE3C118925DEE5840093EB14 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C118825DEE5840093EB14 /* NetworkHelper.swift */; };
 		AE3C118D25DF88EC0093EB14 /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C118B25DF88EC0093EB14 /* ImagesViewController.swift */; };
 		AE3C118E25DF88EC0093EB14 /* ImagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE3C118C25DF88EC0093EB14 /* ImagesViewController.xib */; };
@@ -30,11 +30,13 @@
 		AE5E441E25DDC37E00AFA3CC /* URLComponentsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5E441D25DDC37D00AFA3CC /* URLComponentsExtension.swift */; };
 		AE5E442325DE357F00AFA3CC /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5E442225DE357F00AFA3CC /* ViewControllerExtension.swift */; };
 		AE9F7C5425E04AB4002A98DD /* AlertingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F7C5325E04AB4002A98DD /* AlertingProtocol.swift */; };
+		AE9F7C5925E058C3002A98DD /* TokenDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F7C5825E058C3002A98DD /* TokenDataResponse.swift */; };
+		AE9F7C6025E05CEC002A98DD /* GithubModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F7C5F25E05CEC002A98DD /* GithubModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AE3C118225DE6CB70093EB14 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
-		AE3C118525DE6FB60093EB14 /* OAthNetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAthNetworkingService.swift; sourceTree = "<group>"; };
+		AE3C118525DE6FB60093EB14 /* TokenData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenData.swift; sourceTree = "<group>"; };
 		AE3C118825DEE5840093EB14 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		AE3C118B25DF88EC0093EB14 /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
 		AE3C118C25DF88EC0093EB14 /* ImagesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImagesViewController.xib; sourceTree = "<group>"; };
@@ -58,6 +60,8 @@
 		AE5E441D25DDC37D00AFA3CC /* URLComponentsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLComponentsExtension.swift; sourceTree = "<group>"; };
 		AE5E442225DE357F00AFA3CC /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		AE9F7C5325E04AB4002A98DD /* AlertingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertingProtocol.swift; sourceTree = "<group>"; };
+		AE9F7C5825E058C3002A98DD /* TokenDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDataResponse.swift; sourceTree = "<group>"; };
+		AE9F7C5F25E05CEC002A98DD /* GithubModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +101,9 @@
 				AE5E440425DDA32B00AFA3CC /* LaunchScreen.storyboard */,
 				AE5E440725DDA32B00AFA3CC /* Info.plist */,
 				AE5E43FF25DDA32600AFA3CC /* GitHubPhotoGalary.xcdatamodeld */,
+				AE9F7C5B25E058E5002A98DD /* Model */,
 				AE5E442925DE47FD00AFA3CC /* Services */,
-				AE5E441325DDA76500AFA3CC /* GithubConstans.swift */,
+				AE9F7C5D25E058F7002A98DD /* Constant */,
 				AE5E442725DE47BC00AFA3CC /* Controller */,
 				AE5E442825DE47DA00AFA3CC /* View */,
 				AE5E442025DDC38C00AFA3CC /* Extension */,
@@ -141,13 +146,30 @@
 			isa = PBXGroup;
 			children = (
 				AE5E441025DDA68900AFA3CC /* OAthService.swift */,
-				AE3C118525DE6FB60093EB14 /* OAthNetworkingService.swift */,
 				AE3C118825DEE5840093EB14 /* NetworkHelper.swift */,
 				AE3C119825DF9E160093EB14 /* GithubAPI.swift */,
 				AE3C119C25DFE0F20093EB14 /* ImageLoaderManager .swift */,
 				AE3C119F25DFE4C90093EB14 /* Networking.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		AE9F7C5B25E058E5002A98DD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AE3C118525DE6FB60093EB14 /* TokenData.swift */,
+				AE9F7C5825E058C3002A98DD /* TokenDataResponse.swift */,
+				AE9F7C5F25E05CEC002A98DD /* GithubModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AE9F7C5D25E058F7002A98DD /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				AE5E441325DDA76500AFA3CC /* GithubConstans.swift */,
+			);
+			path = Constant;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +269,7 @@
 			files = (
 				AE5E441925DDB20E00AFA3CC /* LoginViewController.swift in Sources */,
 				AE5E442325DE357F00AFA3CC /* ViewControllerExtension.swift in Sources */,
+				AE9F7C5925E058C3002A98DD /* TokenDataResponse.swift in Sources */,
 				AE3C119525DF8BC30093EB14 /* ImageCollectionViewCell.swift in Sources */,
 				AE3C11A025DFE4C90093EB14 /* Networking.swift in Sources */,
 				AE3C118325DE6CB70093EB14 /* URL.swift in Sources */,
@@ -256,9 +279,10 @@
 				AE5E43F725DDA32600AFA3CC /* AppDelegate.swift in Sources */,
 				AE3C118D25DF88EC0093EB14 /* ImagesViewController.swift in Sources */,
 				AE9F7C5425E04AB4002A98DD /* AlertingProtocol.swift in Sources */,
-				AE3C118625DE6FB60093EB14 /* OAthNetworkingService.swift in Sources */,
+				AE3C118625DE6FB60093EB14 /* TokenData.swift in Sources */,
 				AE5E43F925DDA32600AFA3CC /* SceneDelegate.swift in Sources */,
 				AE5E440125DDA32600AFA3CC /* GitHubPhotoGalary.xcdatamodeld in Sources */,
+				AE9F7C6025E05CEC002A98DD /* GithubModel.swift in Sources */,
 				AE3C119D25DFE0F30093EB14 /* ImageLoaderManager .swift in Sources */,
 				AE5E441125DDA68A00AFA3CC /* OAthService.swift in Sources */,
 				AE5E441E25DDC37E00AFA3CC /* URLComponentsExtension.swift in Sources */,

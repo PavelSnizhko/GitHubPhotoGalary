@@ -20,5 +20,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "079F0A88-C74F-4E83-93AB-459305409ACE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GitHubPhotoGalary/Services/ImageLoaderManager .swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "filterGithubModels(from:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "079F0A88-C74F-4E83-93AB-459305409ACE - 248b79d43aeb26c6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GitHubPhotoGalary.ImageLoaderManager.filterGithubModels(from: Swift.Array&lt;GitHubPhotoGalary.GithubModel&gt;) -&gt; Swift.Array&lt;GitHubPhotoGalary.GithubModel&gt;"
+                  moduleName = "GitHubPhotoGalary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelsnizko/Desktop/PM/GitHubPhotoGalary/GitHubPhotoGalary/Services/ImageLoaderManager%20.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "106">
+               </Location>
+               <Location
+                  uuid = "079F0A88-C74F-4E83-93AB-459305409ACE - 5379129e441ea120"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (GitHubPhotoGalary.GithubModel) -&gt; () in GitHubPhotoGalary.ImageLoaderManager.filterGithubModels(from: Swift.Array&lt;GitHubPhotoGalary.GithubModel&gt;) -&gt; Swift.Array&lt;GitHubPhotoGalary.GithubModel&gt;"
+                  moduleName = "GitHubPhotoGalary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelsnizko/Desktop/PM/GitHubPhotoGalary/GitHubPhotoGalary/Services/ImageLoaderManager%20.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "240">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
