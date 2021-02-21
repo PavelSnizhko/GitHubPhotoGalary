@@ -14,7 +14,7 @@ protocol ImageNetworkingService {
 }
 
 class ImageLoaderManager {
-    let imageTypesSet: Set<String> = [ ".tiff", ".jpeg", ".jpg", ".gif", ".png", ".raw"]
+    let imageTypesSet: Set<String> = ProjectConstants.fileTypes
     let imageNetworkingService: ImageNetworkingService
     init(imageNetworkingService: ImageNetworkingService) {
         self.imageNetworkingService = imageNetworkingService
@@ -25,6 +25,7 @@ class ImageLoaderManager {
         imageNetworkingService.loadGithubModels(withURL: URL(string: url)!, token: token, type: [GithubModel].self) {[weak self]  result in
             switch result {
             case .success(let models):
+                // TODO: thow further and handle it
                 print(self?.filterGithubModels(from: models))
             case .failure(let error):
                 print(error)
@@ -33,7 +34,6 @@ class ImageLoaderManager {
     }
     
     func filterGithubModels(from githubModels: [GithubModel]) -> [GithubModel] {
-        //todo check if it works
         var imageModels = Array<GithubModel>()
         githubModels.forEach { model in
             let fileName = model.name

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -32,6 +32,9 @@
 		AE9F7C5425E04AB4002A98DD /* AlertingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F7C5325E04AB4002A98DD /* AlertingProtocol.swift */; };
 		AE9F7C5925E058C3002A98DD /* TokenDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F7C5825E058C3002A98DD /* TokenDataResponse.swift */; };
 		AE9F7C6025E05CEC002A98DD /* GithubModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F7C5F25E05CEC002A98DD /* GithubModel.swift */; };
+		AE9F7C6725E081C6002A98DD /* ProjectConstans.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F7C6625E081C6002A98DD /* ProjectConstans.swift */; };
+		AE9F7C8125E26319002A98DD /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = AE9F7C8025E26319002A98DD /* KeychainAccess */; };
+		AE9F7C8425E26984002A98DD /* LoginWebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F7C8325E26984002A98DD /* LoginWebViewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +65,8 @@
 		AE9F7C5325E04AB4002A98DD /* AlertingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertingProtocol.swift; sourceTree = "<group>"; };
 		AE9F7C5825E058C3002A98DD /* TokenDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDataResponse.swift; sourceTree = "<group>"; };
 		AE9F7C5F25E05CEC002A98DD /* GithubModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubModel.swift; sourceTree = "<group>"; };
+		AE9F7C6625E081C6002A98DD /* ProjectConstans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectConstans.swift; sourceTree = "<group>"; };
+		AE9F7C8325E26984002A98DD /* LoginWebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWebViewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE9F7C8125E26319002A98DD /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +133,7 @@
 				AE5E441725DDB20E00AFA3CC /* LoginViewController.swift */,
 				AE3C118B25DF88EC0093EB14 /* ImagesViewController.swift */,
 				AE9F7C5325E04AB4002A98DD /* AlertingProtocol.swift */,
+				AE9F7C8325E26984002A98DD /* LoginWebViewViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -168,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				AE5E441325DDA76500AFA3CC /* GithubConstans.swift */,
+				AE9F7C6625E081C6002A98DD /* ProjectConstans.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -189,6 +197,9 @@
 			dependencies = (
 			);
 			name = GitHubPhotoGalary;
+			packageProductDependencies = (
+				AE9F7C8025E26319002A98DD /* KeychainAccess */,
+			);
 			productName = GitHubPhotoGalary;
 			productReference = AE5E43F325DDA32600AFA3CC /* GitHubPhotoGalary.app */;
 			productType = "com.apple.product-type.application";
@@ -216,6 +227,9 @@
 				Base,
 			);
 			mainGroup = AE5E43EA25DDA32600AFA3CC;
+			packageReferences = (
+				AE9F7C7F25E26319002A98DD /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			productRefGroup = AE5E43F425DDA32600AFA3CC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -279,8 +293,10 @@
 				AE5E43F725DDA32600AFA3CC /* AppDelegate.swift in Sources */,
 				AE3C118D25DF88EC0093EB14 /* ImagesViewController.swift in Sources */,
 				AE9F7C5425E04AB4002A98DD /* AlertingProtocol.swift in Sources */,
+				AE9F7C6725E081C6002A98DD /* ProjectConstans.swift in Sources */,
 				AE3C118625DE6FB60093EB14 /* TokenData.swift in Sources */,
 				AE5E43F925DDA32600AFA3CC /* SceneDelegate.swift in Sources */,
+				AE9F7C8425E26984002A98DD /* LoginWebViewViewController.swift in Sources */,
 				AE5E440125DDA32600AFA3CC /* GitHubPhotoGalary.xcdatamodeld in Sources */,
 				AE9F7C6025E05CEC002A98DD /* GithubModel.swift in Sources */,
 				AE3C119D25DFE0F30093EB14 /* ImageLoaderManager .swift in Sources */,
@@ -487,6 +503,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AE9F7C7F25E26319002A98DD /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AE9F7C8025E26319002A98DD /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE9F7C7F25E26319002A98DD /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		AE5E43FF25DDA32600AFA3CC /* GitHubPhotoGalary.xcdatamodeld */ = {
