@@ -23,47 +23,110 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "079F0A88-C74F-4E83-93AB-459305409ACE"
+            uuid = "F62E0C15-0C7F-4616-B087-77D9849A6FB0"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GitHubPhotoGalary/Services/ImageLoaderManager .swift"
+            filePath = "GitHubPhotoGalary/Services/OAthService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "filterGithubModels(from:)"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "exchangeCodeForToken(url:completion:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "079F0A88-C74F-4E83-93AB-459305409ACE - 248b79d43aeb26c6"
+                  uuid = "F62E0C15-0C7F-4616-B087-77D9849A6FB0 - 45042ea6fe2c0a60"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "GitHubPhotoGalary.ImageLoaderManager.filterGithubModels(from: Swift.Array&lt;GitHubPhotoGalary.GithubModel&gt;) -&gt; Swift.Array&lt;GitHubPhotoGalary.GithubModel&gt;"
+                  symbolName = "closure #1 (Swift.Result&lt;GitHubPhotoGalary.TokenDataResponse, Swift.Error&gt;) -&gt; () in GitHubPhotoGalary.OAthService.exchangeCodeForToken(url: Foundation.URL, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
                   moduleName = "GitHubPhotoGalary"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pavelsnizko/Desktop/PM/GitHubPhotoGalary/GitHubPhotoGalary/Services/ImageLoaderManager%20.swift"
+                  urlString = "file:///Users/pavelsnizko/Desktop/PM/GitHubPhotoGalary/GitHubPhotoGalary/Services/OAthService.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39"
-                  offsetFromSymbolStart = "106">
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "190">
                </Location>
                <Location
-                  uuid = "079F0A88-C74F-4E83-93AB-459305409ACE - 5379129e441ea120"
+                  uuid = "F62E0C15-0C7F-4616-B087-77D9849A6FB0 - 45042ea6fe2c0a60"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (GitHubPhotoGalary.GithubModel) -&gt; () in GitHubPhotoGalary.ImageLoaderManager.filterGithubModels(from: Swift.Array&lt;GitHubPhotoGalary.GithubModel&gt;) -&gt; Swift.Array&lt;GitHubPhotoGalary.GithubModel&gt;"
+                  symbolName = "closure #1 (Swift.Result&lt;GitHubPhotoGalary.TokenDataResponse, Swift.Error&gt;) -&gt; () in GitHubPhotoGalary.OAthService.exchangeCodeForToken(url: Foundation.URL, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
                   moduleName = "GitHubPhotoGalary"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pavelsnizko/Desktop/PM/GitHubPhotoGalary/GitHubPhotoGalary/Services/ImageLoaderManager%20.swift"
+                  urlString = "file:///Users/pavelsnizko/Desktop/PM/GitHubPhotoGalary/GitHubPhotoGalary/Services/OAthService.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "240">
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "212">
+               </Location>
+               <Location
+                  uuid = "F62E0C15-0C7F-4616-B087-77D9849A6FB0 - 45042ea6fe2c0a60"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;GitHubPhotoGalary.TokenDataResponse, Swift.Error&gt;) -&gt; () in GitHubPhotoGalary.OAthService.exchangeCodeForToken(url: Foundation.URL, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "GitHubPhotoGalary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelsnizko/Desktop/PM/GitHubPhotoGalary/GitHubPhotoGalary/Services/OAthService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "909">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BF8E99D7-3A3D-4AC1-A812-DCB48F63F2A0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GitHubPhotoGalary/Services/OAthService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "uploadTokenData(withURL:tokenData:type:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BF8E99D7-3A3D-4AC1-A812-DCB48F63F2A0 - f2f3d79576f2e02e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in GitHubPhotoGalary.OAthNetworkingService.uploadTokenData&lt;A, B where A: Swift.Decodable, B: Swift.Encodable&gt;(withURL: Foundation.URL, tokenData: B, type: A.Type, completion: (Swift.Result&lt;A, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "GitHubPhotoGalary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelsnizko/Desktop/PM/GitHubPhotoGalary/GitHubPhotoGalary/Services/OAthService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "500">
+               </Location>
+               <Location
+                  uuid = "BF8E99D7-3A3D-4AC1-A812-DCB48F63F2A0 - f2f3d79576f2e02e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in GitHubPhotoGalary.OAthNetworkingService.uploadTokenData&lt;A, B where A: Swift.Decodable, B: Swift.Encodable&gt;(withURL: Foundation.URL, tokenData: B, type: A.Type, completion: (Swift.Result&lt;A, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "GitHubPhotoGalary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelsnizko/Desktop/PM/GitHubPhotoGalary/GitHubPhotoGalary/Services/OAthService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "542">
                </Location>
             </Locations>
          </BreakpointContent>

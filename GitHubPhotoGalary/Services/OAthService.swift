@@ -7,11 +7,6 @@
 
 import Foundation
 
-enum RequestConstant: String {
-    case schema = "https"
-    case host = "github.com"
-    case path = "/login/oauth/authorize"
-}
 
 enum NetworkError: Error {
     case badURLResponse
@@ -19,8 +14,14 @@ enum NetworkError: Error {
     case badURL
 }
 
-
 class NetworkHelper {
+    enum RequestConstant: String {
+        case schema = "https"
+        case host = "github.com"
+        case path = "/login/oauth/authorize"
+    }
+
+    
     static func getUrl() -> URL? {
         var urlComponents = URLComponents()
         urlComponents.scheme = RequestConstant.schema.rawValue
@@ -30,10 +31,37 @@ class NetworkHelper {
     }
 }
 
-
-protocol OAthNetworkingService {
-    func loadToken(withURL url: URL, tokenData: TokenData, completion: @escaping ((Result<TokenDataResponse, Error>)) -> Void)
+protocol OAthNetworking{
+    
+    func uploadTokenData <Type1: Decodable, Type2: Encodable>(withURL url: URL, tokenData data: Type2, type: Type1.Type, completion: @escaping (Result<Type1, Error>) -> Void)
 }
+
+class OAthNetworkingService: OAthNetworking {
+
+    
+    func uploadTokenData <Type1: Decodable, Type2: Encodable>(withURL url: URL, tokenData data: Type2, type: Type1.Type, completion: @escaping (Result<Type1, Error>) -> Void) {
+        Networking.shared.upload(withURL: url, withData: data) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let tokenResponseData = try JSONDecoder().decode(type.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(.success(tokenResponseData))
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        completion(.failure(error))
+                    }
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+}
+    
 
 
 class OAthService {
@@ -41,9 +69,9 @@ class OAthService {
     // make private
     var state: String?
     private var onAuthenticationResult: ((Result<String, Error>) -> Void)?
-    private var oAthNetworkingService: OAthNetworkingService
+    private var oAthNetworkingService: OAthNetworking
     
-    init(oAthNetworkingService: OAthNetworkingService) {
+    init(oAthNetworkingService: OAthNetworking) {
         self.oAthNetworkingService = oAthNetworkingService
     }
     
@@ -59,36 +87,20 @@ class OAthService {
                                   redirectUrl: GithubConstants.redirectURI.rawValue,
                                   state: state)
         guard let url = URLManager.getGithubURL() else { return completion(.failure(NetworkError.badURL)) }
-        oAthNetworkingService.loadToken(withURL: url, tokenData: tokenData) { result in
+        oAthNetworkingService.uploadTokenData(withURL: url, tokenData: tokenData, type: TokenDataResponse.self) { result in
             switch result {
             case .success(let tokenDataResponse):
                 print("Token: \(tokenDataResponse.accessToken)")
                 completion(.success(tokenDataResponse.accessToken))
             case .failure(let error):
-                completion(.failure(error))
                 print(error)
-            }      
+                completion(.failure(error))
+            }
         }
     }
    
     func getCodeFromUrl(url: URL) -> String? {
         guard let code = url.valueOf("code"), let state = url.valueOf("state"), state == self.state else { return nil}
         return code
-    }
-}
-
-
-// ask is it okey to have method like that or move to another class because it's like in presentation was
-extension Networking: OAthNetworkingService {
-    
-    func loadToken(withURL url: URL, tokenData: TokenData, completion: @escaping (Result<TokenDataResponse, Error>) -> Void) {
-        upload(withURL: url, withData: tokenData, type: TokenDataResponse.self) { result in
-            switch result {
-            case .success(let tokenDataResponse):
-                completion(.success(tokenDataResponse))
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
     }
 }

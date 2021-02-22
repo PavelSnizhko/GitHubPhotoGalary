@@ -11,9 +11,6 @@
 		AE3C118625DE6FB60093EB14 /* TokenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C118525DE6FB60093EB14 /* TokenData.swift */; };
 		AE3C118925DEE5840093EB14 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C118825DEE5840093EB14 /* NetworkHelper.swift */; };
 		AE3C118D25DF88EC0093EB14 /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C118B25DF88EC0093EB14 /* ImagesViewController.swift */; };
-		AE3C118E25DF88EC0093EB14 /* ImagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE3C118C25DF88EC0093EB14 /* ImagesViewController.xib */; };
-		AE3C119525DF8BC30093EB14 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C119325DF8BC30093EB14 /* ImageCollectionViewCell.swift */; };
-		AE3C119625DF8BC30093EB14 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE3C119425DF8BC30093EB14 /* ImageCollectionViewCell.xib */; };
 		AE3C119925DF9E170093EB14 /* GithubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C119825DF9E160093EB14 /* GithubAPI.swift */; };
 		AE3C119D25DFE0F30093EB14 /* ImageLoaderManager .swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C119C25DFE0F20093EB14 /* ImageLoaderManager .swift */; };
 		AE3C11A025DFE4C90093EB14 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C119F25DFE4C90093EB14 /* Networking.swift */; };
@@ -35,6 +32,8 @@
 		AE9F7C6725E081C6002A98DD /* ProjectConstans.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F7C6625E081C6002A98DD /* ProjectConstans.swift */; };
 		AE9F7C8125E26319002A98DD /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = AE9F7C8025E26319002A98DD /* KeychainAccess */; };
 		AE9F7C8425E26984002A98DD /* LoginWebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F7C8325E26984002A98DD /* LoginWebViewViewController.swift */; };
+		AE9F7C8E25E2754A002A98DD /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F7C8C25E2754A002A98DD /* TableViewCell.swift */; };
+		AE9F7C8F25E2754A002A98DD /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE9F7C8D25E2754A002A98DD /* TableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,9 +41,6 @@
 		AE3C118525DE6FB60093EB14 /* TokenData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenData.swift; sourceTree = "<group>"; };
 		AE3C118825DEE5840093EB14 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		AE3C118B25DF88EC0093EB14 /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
-		AE3C118C25DF88EC0093EB14 /* ImagesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImagesViewController.xib; sourceTree = "<group>"; };
-		AE3C119325DF8BC30093EB14 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
-		AE3C119425DF8BC30093EB14 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		AE3C119825DF9E160093EB14 /* GithubAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAPI.swift; sourceTree = "<group>"; };
 		AE3C119C25DFE0F20093EB14 /* ImageLoaderManager .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageLoaderManager .swift"; sourceTree = "<group>"; };
 		AE3C119F25DFE4C90093EB14 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
@@ -67,6 +63,8 @@
 		AE9F7C5F25E05CEC002A98DD /* GithubModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubModel.swift; sourceTree = "<group>"; };
 		AE9F7C6625E081C6002A98DD /* ProjectConstans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectConstans.swift; sourceTree = "<group>"; };
 		AE9F7C8325E26984002A98DD /* LoginWebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWebViewViewController.swift; sourceTree = "<group>"; };
+		AE9F7C8C25E2754A002A98DD /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		AE9F7C8D25E2754A002A98DD /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +98,7 @@
 		AE5E43F525DDA32600AFA3CC /* GitHubPhotoGalary */ = {
 			isa = PBXGroup;
 			children = (
+				AE9F7C9725E37B05002A98DD /* CoreData */,
 				AE5E43F625DDA32600AFA3CC /* AppDelegate.swift */,
 				AE5E43F825DDA32600AFA3CC /* SceneDelegate.swift */,
 				AE5E43FC25DDA32600AFA3CC /* Main.storyboard */,
@@ -141,10 +140,9 @@
 		AE5E442825DE47DA00AFA3CC /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AE3C118C25DF88EC0093EB14 /* ImagesViewController.xib */,
 				AE5E441825DDB20E00AFA3CC /* LoginViewController.xib */,
-				AE3C119325DF8BC30093EB14 /* ImageCollectionViewCell.swift */,
-				AE3C119425DF8BC30093EB14 /* ImageCollectionViewCell.xib */,
+				AE9F7C8C25E2754A002A98DD /* TableViewCell.swift */,
+				AE9F7C8D25E2754A002A98DD /* TableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -178,6 +176,13 @@
 				AE9F7C6625E081C6002A98DD /* ProjectConstans.swift */,
 			);
 			path = Constant;
+			sourceTree = "<group>";
+		};
+		AE9F7C9725E37B05002A98DD /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,11 +249,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE3C118E25DF88EC0093EB14 /* ImagesViewController.xib in Resources */,
 				AE5E441A25DDB20E00AFA3CC /* LoginViewController.xib in Resources */,
+				AE9F7C8F25E2754A002A98DD /* TableViewCell.xib in Resources */,
 				AE5E440625DDA32B00AFA3CC /* LaunchScreen.storyboard in Resources */,
 				AE5E440325DDA32B00AFA3CC /* Assets.xcassets in Resources */,
-				AE3C119625DF8BC30093EB14 /* ImageCollectionViewCell.xib in Resources */,
 				AE5E43FE25DDA32600AFA3CC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,7 +288,6 @@
 				AE5E441925DDB20E00AFA3CC /* LoginViewController.swift in Sources */,
 				AE5E442325DE357F00AFA3CC /* ViewControllerExtension.swift in Sources */,
 				AE9F7C5925E058C3002A98DD /* TokenDataResponse.swift in Sources */,
-				AE3C119525DF8BC30093EB14 /* ImageCollectionViewCell.swift in Sources */,
 				AE3C11A025DFE4C90093EB14 /* Networking.swift in Sources */,
 				AE3C118325DE6CB70093EB14 /* URL.swift in Sources */,
 				AE5E441425DDA76500AFA3CC /* GithubConstans.swift in Sources */,
@@ -298,6 +301,7 @@
 				AE5E43F925DDA32600AFA3CC /* SceneDelegate.swift in Sources */,
 				AE9F7C8425E26984002A98DD /* LoginWebViewViewController.swift in Sources */,
 				AE5E440125DDA32600AFA3CC /* GitHubPhotoGalary.xcdatamodeld in Sources */,
+				AE9F7C8E25E2754A002A98DD /* TableViewCell.swift in Sources */,
 				AE9F7C6025E05CEC002A98DD /* GithubModel.swift in Sources */,
 				AE3C119D25DFE0F30093EB14 /* ImageLoaderManager .swift in Sources */,
 				AE5E441125DDA68A00AFA3CC /* OAthService.swift in Sources */,

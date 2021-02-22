@@ -9,8 +9,13 @@ import Foundation
 
 
 class Networking {
+    static let shared = Networking()
+    
+    private init() { }
+    
     enum NetworkingErrors: String, Error {
         case serverError = "Something wrong on the server"
+        case transportError = "Something wrong on the client"
     }
     
     enum HttpMethods: String {
@@ -22,7 +27,8 @@ class Networking {
     
     let session = URLSession.shared
     
-    func load <T: Decodable>(withURL url: URL, token: String?, type: T.Type = T.self, completion: @escaping (Result<T, Error>) -> Void) {
+    func load(withURL url: URL, token: String?, completion: @escaping (Result<Data, Error>) -> Void) {
+        // two separete load function to have acces to Data type(for image) and custom type
         var request = URLRequest(url: url)
         request.httpMethod = HttpMethods.get.rawValue
         if let token = token {
@@ -30,62 +36,40 @@ class Networking {
         }
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-
+        
         session.dataTask(with: request) {(data, response, error) in
             if error == nil {
-                let decoder = JSONDecoder()
-                if let data = data {
-                    do {
-                        let responseModel = try decoder.decode(type, from: data)
-                        DispatchQueue.main.async {
-                            completion(.success(responseModel))
-                        }
-                    } catch {
-                        DispatchQueue.main.async {
-                            completion(.failure(error))
-                        }
-                    }
-                }
+                completion(.failure(NetworkingErrors.transportError))
             }
-            else {
-                DispatchQueue.main.async {
-                    completion(.failure(NetworkingErrors.serverError))
-                }
+            guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode), let data = data else {
+                completion(.failure(NetworkingErrors.serverError))
+                return
             }
+            completion(.success(data))
         }.resume()
     }
     
-    func upload <Type1: Decodable, Type2: Encodable>(withURL url: URL, withData data: Type2, type: Type1.Type, completion: @escaping (Result<Type1, Error>) -> Void) {
+    func upload <T: Encodable>(withURL url: URL, withData data: T, completion: @escaping (Result<Data, Error>) -> Void) {
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.httpMethod = HttpMethods.post.rawValue
- 
         do {
             let encoder = JSONEncoder()
             encoder.outputFormatting = .prettyPrinted
             let jsonData = try encoder.encode(data)
             
-            let task = session.uploadTask(with: request, from: jsonData) { data, response, error in
-                guard let data = data else { return completion(.failure(NetworkError.serverError)) }
-                do {
-                    let tokenResponseData = try JSONDecoder().decode(type.self, from: data)
-                    DispatchQueue.main.async {
-                        completion(.success(tokenResponseData))
-                    }
+            session.uploadTask(with: request, from: jsonData) { data, response, error in
+                guard error == nil else { return completion(.failure(NetworkingErrors.transportError)) }
+                
+                guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode), let data = data else {
+                    completion(.failure(NetworkError.serverError))
                     return
-                } catch {
-                    DispatchQueue.main.async {
-                        completion(.failure(error))
-                    }
                 }
-            }
-            task.resume()
+                completion(.success(data))
+            }.resume()
         } catch {
-            DispatchQueue.main.async {
-                completion(.failure(error))
-            }
+            completion(.failure(error))
         }
-        
     }
 }

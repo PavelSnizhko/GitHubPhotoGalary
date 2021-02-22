@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
         // TODO: create additional class and move to static method this lines
         let navigationController = UINavigationController()
-        let mainView = LoginViewController(oAthService: OAthService(oAthNetworkingService: Networking()), imageLoader: ImageLoaderManager(imageNetworkingService: Networking()))
+        let mainView = LoginViewController()
         navigationController.viewControllers = [mainView]
         window?.rootViewController = navigationController
     }
