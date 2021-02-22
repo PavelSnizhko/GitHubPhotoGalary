@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 enum NetworkError: Error {
     case badURLResponse
     case serverError
@@ -21,7 +20,6 @@ class NetworkHelper {
         case path = "/login/oauth/authorize"
     }
 
-    
     static func getUrl() -> URL? {
         var urlComponents = URLComponents()
         urlComponents.scheme = RequestConstant.schema.rawValue
@@ -31,14 +29,13 @@ class NetworkHelper {
     }
 }
 
-protocol OAthNetworking{
+protocol OAthNetworking {
     
     func uploadTokenData <Type1: Decodable, Type2: Encodable>(withURL url: URL, tokenData data: Type2, type: Type1.Type, completion: @escaping (Result<Type1, Error>) -> Void)
 }
 
 class OAthNetworkingService: OAthNetworking {
 
-    
     func uploadTokenData <Type1: Decodable, Type2: Encodable>(withURL url: URL, tokenData data: Type2, type: Type1.Type, completion: @escaping (Result<Type1, Error>) -> Void) {
         Networking.shared.upload(withURL: url, withData: data) { result in
             switch result {
@@ -62,8 +59,6 @@ class OAthNetworkingService: OAthNetworking {
     }
 }
     
-
-
 class OAthService {
     // TODO: create keychain wrapper
     // make private
@@ -90,10 +85,8 @@ class OAthService {
         oAthNetworkingService.uploadTokenData(withURL: url, tokenData: tokenData, type: TokenDataResponse.self) { result in
             switch result {
             case .success(let tokenDataResponse):
-                print("Token: \(tokenDataResponse.accessToken)")
                 completion(.success(tokenDataResponse.accessToken))
             case .failure(let error):
-                print(error)
                 completion(.failure(error))
             }
         }

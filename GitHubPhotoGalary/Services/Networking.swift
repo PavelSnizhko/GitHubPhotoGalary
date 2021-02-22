@@ -38,12 +38,10 @@ class Networking {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         session.dataTask(with: request) {(data, response, error) in
-            if error == nil {
-                completion(.failure(NetworkingErrors.transportError))
-            }
+            guard error == nil else { return completion(.failure(NetworkingErrors.transportError)) }
+
             guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode), let data = data else {
-                completion(.failure(NetworkingErrors.serverError))
-                return
+                return completion(.failure(NetworkingErrors.serverError))
             }
             completion(.success(data))
         }.resume()

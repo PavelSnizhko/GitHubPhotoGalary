@@ -24,12 +24,6 @@ import Foundation
 //        }
 //    }
 
-struct GithubModels {
-    let models: [GithubModel]
-}
-
-
-
 struct GithubModel: Decodable {
     let name, path, sha, url, type: String
     let size: Int

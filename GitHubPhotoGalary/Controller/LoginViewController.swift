@@ -7,6 +7,7 @@
 
 import UIKit
 import WebKit
+import CoreData
 
 class LoginViewController: UIViewController {
 
@@ -29,9 +30,16 @@ class LoginViewController: UIViewController {
 
     @IBAction func pressedLoginButton(_ sender: Any) {
         // TODO: maybe make login view controller under protocol
-        let oAthService = OAthService(oAthNetworkingService: OAthNetworkingService())
-        let imageLoader = ImageLoaderManager(imageNetworkingService: ImageNetworkingService())
-        let loginWebViewVC = LoginWebViewViewController(oAthService: oAthService, imageLoader: imageLoader)
-        navigationController?.pushViewController(loginWebViewVC, animated: true)
+        if UserDefaults.standard.bool(forKey: "activeSession") {
+            // use face id
+            //load from cache
+            navigationController?.pushViewController(ImagesViewController(imageLoader: DataLoaderManager(imageNetworkingService:
+                                                                                                            ImageNetworkingService(), container: CoreDataStack.shared.container)), animated: true)
+        } else {
+            let oAthService = OAthService(oAthNetworkingService: OAthNetworkingService())
+            let loginWebViewVC = LoginWebViewViewController(oAthService: oAthService)
+            navigationController?.pushViewController(loginWebViewVC, animated: true)
+        }
+        
     }
 }

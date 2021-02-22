@@ -11,9 +11,15 @@
 		AE3C118625DE6FB60093EB14 /* TokenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C118525DE6FB60093EB14 /* TokenData.swift */; };
 		AE3C118925DEE5840093EB14 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C118825DEE5840093EB14 /* NetworkHelper.swift */; };
 		AE3C118D25DF88EC0093EB14 /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C118B25DF88EC0093EB14 /* ImagesViewController.swift */; };
-		AE3C119925DF9E170093EB14 /* GithubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C119825DF9E160093EB14 /* GithubAPI.swift */; };
 		AE3C119D25DFE0F30093EB14 /* ImageLoaderManager .swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C119C25DFE0F20093EB14 /* ImageLoaderManager .swift */; };
 		AE3C11A025DFE4C90093EB14 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C119F25DFE4C90093EB14 /* Networking.swift */; };
+		AE518F1F25E38E14002EBB2F /* ImageEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE518F1D25E38E14002EBB2F /* ImageEntity+CoreDataClass.swift */; };
+		AE518F2025E38E14002EBB2F /* ImageEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE518F1E25E38E14002EBB2F /* ImageEntity+CoreDataProperties.swift */; };
+		AE518F2425E38FB5002EBB2F /* ImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE518F2325E38FB5002EBB2F /* ImageFactory.swift */; };
+		AE518F2A25E390F3002EBB2F /* UITableViewFetchedResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE518F2925E390F3002EBB2F /* UITableViewFetchedResultsController.swift */; };
+		AE518F2D25E391B5002EBB2F /* ImagesFRC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE518F2C25E391B5002EBB2F /* ImagesFRC.swift */; };
+		AE518F3225E39F24002EBB2F /* ImagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE518F3125E39F24002EBB2F /* ImagesDataSource.swift */; };
+		AE518F3625E3FD96002EBB2F /* ImageNetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE518F3525E3FD96002EBB2F /* ImageNetworkingService.swift */; };
 		AE5E43F725DDA32600AFA3CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5E43F625DDA32600AFA3CC /* AppDelegate.swift */; };
 		AE5E43F925DDA32600AFA3CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5E43F825DDA32600AFA3CC /* SceneDelegate.swift */; };
 		AE5E43FE25DDA32600AFA3CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE5E43FC25DDA32600AFA3CC /* Main.storyboard */; };
@@ -34,6 +40,7 @@
 		AE9F7C8425E26984002A98DD /* LoginWebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F7C8325E26984002A98DD /* LoginWebViewViewController.swift */; };
 		AE9F7C8E25E2754A002A98DD /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F7C8C25E2754A002A98DD /* TableViewCell.swift */; };
 		AE9F7C8F25E2754A002A98DD /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE9F7C8D25E2754A002A98DD /* TableViewCell.xib */; };
+		AE9F7C9925E37B8B002A98DD /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F7C9825E37B8B002A98DD /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,9 +48,15 @@
 		AE3C118525DE6FB60093EB14 /* TokenData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenData.swift; sourceTree = "<group>"; };
 		AE3C118825DEE5840093EB14 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		AE3C118B25DF88EC0093EB14 /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
-		AE3C119825DF9E160093EB14 /* GithubAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAPI.swift; sourceTree = "<group>"; };
 		AE3C119C25DFE0F20093EB14 /* ImageLoaderManager .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageLoaderManager .swift"; sourceTree = "<group>"; };
 		AE3C119F25DFE4C90093EB14 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		AE518F1D25E38E14002EBB2F /* ImageEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		AE518F1E25E38E14002EBB2F /* ImageEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AE518F2325E38FB5002EBB2F /* ImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFactory.swift; sourceTree = "<group>"; };
+		AE518F2925E390F3002EBB2F /* UITableViewFetchedResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewFetchedResultsController.swift; sourceTree = "<group>"; };
+		AE518F2C25E391B5002EBB2F /* ImagesFRC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesFRC.swift; sourceTree = "<group>"; };
+		AE518F3125E39F24002EBB2F /* ImagesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesDataSource.swift; sourceTree = "<group>"; };
+		AE518F3525E3FD96002EBB2F /* ImageNetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNetworkingService.swift; sourceTree = "<group>"; };
 		AE5E43F325DDA32600AFA3CC /* GitHubPhotoGalary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubPhotoGalary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE5E43F625DDA32600AFA3CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE5E43F825DDA32600AFA3CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +78,7 @@
 		AE9F7C8325E26984002A98DD /* LoginWebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWebViewViewController.swift; sourceTree = "<group>"; };
 		AE9F7C8C25E2754A002A98DD /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		AE9F7C8D25E2754A002A98DD /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		AE9F7C9825E37B8B002A98DD /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +93,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE518F1C25E38DB6002EBB2F /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				AE518F1D25E38E14002EBB2F /* ImageEntity+CoreDataClass.swift */,
+				AE518F1E25E38E14002EBB2F /* ImageEntity+CoreDataProperties.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
+		AE518F2725E38FC2002EBB2F /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				AE518F2325E38FB5002EBB2F /* ImageFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		AE518F2F25E395FD002EBB2F /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				AE3C118B25DF88EC0093EB14 /* ImagesViewController.swift */,
+				AE518F2C25E391B5002EBB2F /* ImagesFRC.swift */,
+				AE518F3125E39F24002EBB2F /* ImagesDataSource.swift */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		AE5E43EA25DDA32600AFA3CC = {
 			isa = PBXGroup;
 			children = (
@@ -130,9 +171,10 @@
 			isa = PBXGroup;
 			children = (
 				AE5E441725DDB20E00AFA3CC /* LoginViewController.swift */,
-				AE3C118B25DF88EC0093EB14 /* ImagesViewController.swift */,
+				AE518F2F25E395FD002EBB2F /* Images */,
 				AE9F7C5325E04AB4002A98DD /* AlertingProtocol.swift */,
 				AE9F7C8325E26984002A98DD /* LoginWebViewViewController.swift */,
+				AE518F2925E390F3002EBB2F /* UITableViewFetchedResultsController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -152,9 +194,9 @@
 			children = (
 				AE5E441025DDA68900AFA3CC /* OAthService.swift */,
 				AE3C118825DEE5840093EB14 /* NetworkHelper.swift */,
-				AE3C119825DF9E160093EB14 /* GithubAPI.swift */,
 				AE3C119C25DFE0F20093EB14 /* ImageLoaderManager .swift */,
 				AE3C119F25DFE4C90093EB14 /* Networking.swift */,
+				AE518F3525E3FD96002EBB2F /* ImageNetworkingService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -181,6 +223,9 @@
 		AE9F7C9725E37B05002A98DD /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				AE518F1C25E38DB6002EBB2F /* Generated */,
+				AE9F7C9825E37B8B002A98DD /* CoreDataStack.swift */,
+				AE518F2725E38FC2002EBB2F /* Factory */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -286,17 +331,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE5E441925DDB20E00AFA3CC /* LoginViewController.swift in Sources */,
+				AE518F2D25E391B5002EBB2F /* ImagesFRC.swift in Sources */,
+				AE518F3225E39F24002EBB2F /* ImagesDataSource.swift in Sources */,
 				AE5E442325DE357F00AFA3CC /* ViewControllerExtension.swift in Sources */,
+				AE518F2025E38E14002EBB2F /* ImageEntity+CoreDataProperties.swift in Sources */,
 				AE9F7C5925E058C3002A98DD /* TokenDataResponse.swift in Sources */,
+				AE518F1F25E38E14002EBB2F /* ImageEntity+CoreDataClass.swift in Sources */,
+				AE518F3625E3FD96002EBB2F /* ImageNetworkingService.swift in Sources */,
 				AE3C11A025DFE4C90093EB14 /* Networking.swift in Sources */,
+				AE9F7C9925E37B8B002A98DD /* CoreDataStack.swift in Sources */,
 				AE3C118325DE6CB70093EB14 /* URL.swift in Sources */,
 				AE5E441425DDA76500AFA3CC /* GithubConstans.swift in Sources */,
-				AE3C119925DF9E170093EB14 /* GithubAPI.swift in Sources */,
 				AE3C118925DEE5840093EB14 /* NetworkHelper.swift in Sources */,
 				AE5E43F725DDA32600AFA3CC /* AppDelegate.swift in Sources */,
 				AE3C118D25DF88EC0093EB14 /* ImagesViewController.swift in Sources */,
 				AE9F7C5425E04AB4002A98DD /* AlertingProtocol.swift in Sources */,
 				AE9F7C6725E081C6002A98DD /* ProjectConstans.swift in Sources */,
+				AE518F2425E38FB5002EBB2F /* ImageFactory.swift in Sources */,
+				AE518F2A25E390F3002EBB2F /* UITableViewFetchedResultsController.swift in Sources */,
 				AE3C118625DE6FB60093EB14 /* TokenData.swift in Sources */,
 				AE5E43F925DDA32600AFA3CC /* SceneDelegate.swift in Sources */,
 				AE9F7C8425E26984002A98DD /* LoginWebViewViewController.swift in Sources */,

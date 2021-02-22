@@ -9,11 +9,32 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
     static let cellId = "TableViewCell"
+    @IBOutlet private weak var nameLabel: UILabel!
+    
+    @IBOutlet weak var customImageView: UIImageView!
+    
+    var imageModel: ImageEntity? {
+        didSet {
+            nameLabel.text = imageModel?.name
+            guard let imageData = imageModel?.image  else {
+                customImageView.image = nil
+                return
+            }
+            customImageView.image = UIImage(data: imageData, scale:1.0)
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageModel = nil
+        
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

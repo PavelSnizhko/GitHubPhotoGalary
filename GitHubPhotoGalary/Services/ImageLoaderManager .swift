@@ -6,63 +6,94 @@
 //
 
 import Foundation
+import CoreData
 
-
-protocol ImageNetworking {
-//    func load <T: Decodable>(withURL url: URL, token: String?, type: T.Type = T.self, completion: @escaping (Result<T, Error>)
-    func loadGithubModels<T: Decodable>(withURL url: URL, token: String?, type: T.Type, completion: @escaping (Result<T, Error>) -> Void)
-//    func loadGithubModels(withURL url: URL, token: String?, type: [GithubModel].Type, completion: @escaping (Result<[GithubModel], Error>) -> Void)
-}
-
-
-class ImageNetworkingService: ImageNetworking {
-    func loadGithubModels<T>(withURL url: URL, token: String?, type: T.Type, completion: @escaping (Result<T, Error>) -> Void) where T : Decodable {
-        Networking.shared.load(withURL: url, token: token) { result in
-            switch result {
-            case .success(let data):
-                do {
-                    let decoder = JSONDecoder()
-                    let responseModel = try decoder.decode(type, from: data)
-                    DispatchQueue.main.async {
-                        completion(.success(responseModel))
-                    }
-                } catch {
-                    DispatchQueue.main.async {
-                        completion(.failure(error))
-                    }
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    completion(.failure(error))
-                }
-            }
-        }
-    }
-}
-
-
-class ImageLoaderManager {
-    let imageTypesSet: Set<String> = ProjectConstants.fileTypes
-    let imageNetworkingService: ImageNetworking
-    init(imageNetworkingService: ImageNetworking) {
+class DataLoaderManager {
+    private let imageTypesSet: Set<String> = ProjectConstants.fileTypes
+    private let imageNetworkingService: ImageNetworking?
+    private let container: NSPersistentContainer
+    
+    init(imageNetworkingService: ImageNetworking?, container: NSPersistentContainer) {
         self.imageNetworkingService = imageNetworkingService
+        self.container = container
     }
-    // TODO: replace on wrapperKey
+
     func getImages(token: String) {
-        let url = "https://api.github.com/repos/PavelSnizhko/imagesStorage/contents/"
-        imageNetworkingService.loadGithubModels(withURL: URL(string: url)!, token: token, type: [GithubModel].self) {[weak self]  result in
+        print("MY TOKEN ", token)
+        guard let url = URL(string: GithubConstants.url.rawValue) else { return }
+        imageNetworkingService?.loadGithubModels(withURL: url, token: token, type: [GithubModel].self) { [weak self]  result in
+            guard let self = self else { return }
             switch result {
             case .success(let models):
-                // TODO: thow further and handle it
-                print(self?.filterGithubModels(from: models))
+                let filteredModels = self.filterGithubModels(from: models)
+                self.getImageBinaryData(using: filteredModels)
+                
             case .failure(let error):
                 print(error)
             }
         }
     }
     
+    func getImageBinaryData(using models: [GithubModel]) {
+        models.forEach { model in
+            imageNetworkingService?.loadImages(withURL: model.downloadURL) { result in
+                switch result {
+                case .success(let data):
+                    //TODO before making should I ckeck if it's exist or not
+                    ImageFactory.makeImage(from: data, name: model.name, sha: model.sha, completion: nil)
+                case .failure(let error):
+                    print("ERROR \(error)")
+                }
+            }
+        }
+    }
+    
+    func findDiffFromRepository(token: String) {
+        guard let url = URL(string: GithubConstants.url.rawValue) else { return }
+        imageNetworkingService?.loadGithubModels(withURL: url, token: token, type: [GithubModel].self) { [weak self]  result in
+            guard let self = self else { return }
+            var modelsForDeleting: [ImageEntity.ID] = []
+
+            switch result {
+            case .success(let models):
+
+                var filteredModels = self.filterGithubModels(from: models)
+                var shaSet = Set(filteredModels.map { $0.sha })
+                let fetchRequest: NSFetchRequest<ImageEntity> = ImageEntity.fetchRequest()
+                
+                do {
+                    // use viewContect for reading always?
+                    let images = try self.container.viewContext.fetch(fetchRequest)
+                    print(type(of: images))
+                    images.forEach { image in
+                        guard let sha = image.sha else { return }
+                        if !shaSet.contains(sha) {
+                            modelsForDeleting.append(image.id)
+                            shaSet.remove(sha)
+                        } else {
+                            shaSet.remove(sha)
+                        }
+                    }
+                    self.deleteFromCoreData(imageEntitiesId: modelsForDeleting)
+                    // filter and awoke func to load new photos
+                    let modelsForAppending = filteredModels.filter{ shaSet.contains( $0.sha ) }
+                    self.getImageBinaryData(using: modelsForAppending)
+
+                } catch {
+                    fatalError("This was not supposed to happen")
+                }
+            case .failure(let error):
+                // TODO: alert that time of session is over
+                print(error)
+            }
+        }
+
+    }
+    
+    
+        
     func filterGithubModels(from githubModels: [GithubModel]) -> [GithubModel] {
-        var imageModels = Array<GithubModel>()
+        var imageModels: [GithubModel] = [ ]
         githubModels.forEach { model in
             let fileName = model.name
             if let lastDotIndex = fileName.lastIndex(of: ".") {
@@ -74,19 +105,18 @@ class ImageLoaderManager {
         }
         return imageModels
     }
+    
+    
+    func deleteFromCoreData(imageEntitiesId: [ImageEntity.ID]) {
+        let context = CoreDataStack.shared.container.newBackgroundContext()
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = ImageEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "ID in %@", imageEntitiesId)
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+               _ = try context.execute(batchDeleteRequest)
+               try context.save()
+           } catch {
+               print("Something wrong. Probably images are not exist at all")
+           }
+       }
 }
-//
-//extension Networking: ImageNetworkingService {
-//    func loadGithubModels(withURL url: URL, token: String?, type: [GithubModel].Type, completion: @escaping (Result<[GithubModel], Error>) -> Void) {
-//        load(withURL: url, token: token, type: type) { (result) in
-//            switch result {
-//            case .success(let models):
-//                completion(.success(models))
-//                print(models)
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//                completion(.failure(error))
-//            }
-//        }
-//    }
-//}

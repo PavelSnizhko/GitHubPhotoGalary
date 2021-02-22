@@ -9,4 +9,5 @@ import Foundation
 
 class ProjectConstants {
     static let fileTypes: Set<String> = [ ".tiff", ".jpeg", ".jpg", ".gif", ".png", ".raw"]
+    static let service: String = "com.example.github-token"
 }

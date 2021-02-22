@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct TokenData: Codable {
     let clientId: String
     let clientSecret: String
@@ -25,6 +24,3 @@ struct TokenData: Codable {
         case code
     }
 }
-
-
-
