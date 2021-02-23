@@ -15,7 +15,9 @@ class LoginWebViewViewController: UIViewController, Alerting {
     
     private let webView: WKWebView = {
         let prefs = WKWebpagePreferences()
-        prefs.allowsContentJavaScript = true
+        if #available(iOS 14.0, *) {
+            prefs.allowsContentJavaScript = true
+        }
         let configuration = WKWebViewConfiguration()
         configuration.defaultWebpagePreferences = prefs
         let webView = WKWebView(frame: .zero, configuration: configuration)
@@ -50,9 +52,9 @@ class LoginWebViewViewController: UIViewController, Alerting {
    
     func authorizeApp() {
         // todo: move to some network helper
-        oAthService.state = UUID().uuidString
+        
         guard let state = oAthService.state, let url = URLManager.getGithubURL(state: state) else {
-            showErrorAlert(from: self, title: "Ooops", message: "Something wrong")
+            showAlert(from: self, title: "Ooops", message: "Something wrong or state is not the same")
             return
         }
         let myRequest = URLRequest(url: url)
@@ -72,21 +74,20 @@ extension LoginWebViewViewController: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         guard let url = navigationAction.request.url else { decisionHandler(.allow); return }
-        if url.absoluteString.contains(GithubConstants.redirectURI.rawValue.lowercased()), url.absoluteString.contains("code") {
+        if url.absoluteString.contains(APIConstants.redirectURI.rawValue.lowercased()), url.absoluteString.contains("code") {
             oAthService.exchangeCodeForToken(url: url) { [weak self] result in
                 guard let self = self else { return }
                 switch result {
                 case .success(let token):
                     let keychain = Keychain(service: ProjectConstants.service)
                     keychain["access-token"] = token
-
                     let imagesViewController = ImagesViewController(imageLoader: DataLoaderManager(imageNetworkingService: ImageNetworkingService(), container: CoreDataStack.shared.container))
                     UserDefaults.standard.setValue(true, forKey: "activeSession")
                     self.navigationController?.pushViewController(imagesViewController, animated: true)
                     decisionHandler(.cancel)
 
                 case .failure(let error):
-                    self.showErrorAlert(from: self, title: "Error", message: error.localizedDescription)
+                    self.showAlert(from: self, title: "Error", message: error.localizedDescription)
                     webView.isHidden = true
                     print("Fuck error \(error)")
                 }

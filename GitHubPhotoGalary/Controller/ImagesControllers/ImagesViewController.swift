@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WebKit
 import CoreData
 import KeychainAccess
 
@@ -32,7 +33,6 @@ class ImagesViewController: UIViewController {
         self.view.addSubview(imagesTableView)
         self.navigationController?.navigationItem.backBarButtonItem?.isEnabled = false
         self.navigationItem.setHidesBackButton(true, animated: true)
-        // TODO: make elegant logout
         let logoutBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logoutUser))
         self.navigationItem.rightBarButtonItem  = logoutBarButtonItem
         self.prepareTableView()
@@ -47,6 +47,11 @@ class ImagesViewController: UIViewController {
     
     @objc func logoutUser() {
          print("clicked")
+        ImageEntity.clearAllCoreData()
+        UserDefaults.standard.set(false, forKey: "activeSession")
+        Keychain(service: ProjectConstants.service)["access-token"] = nil
+        WKWebView.clean {  }
+        throwToRootController()
     }
 }
 
@@ -74,6 +79,13 @@ extension UIViewController: UITableViewDelegate {
     }
 
     func imageTapped(image: UIImage) {
+        let newImageView = configureNewImageView(image: image)
+        self.view.addSubview(newImageView)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    func configureNewImageView(image: UIImage) -> UIImageView {
         let newImageView = UIImageView(image: image)
         newImageView.frame = UIScreen.main.bounds
         newImageView.backgroundColor = .black
@@ -81,9 +93,7 @@ extension UIViewController: UITableViewDelegate {
         newImageView.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissFullscreenImage(_:)))
         newImageView.addGestureRecognizer(tap)
-        self.view.addSubview(newImageView)
-        self.navigationController?.isNavigationBarHidden = true
-        self.tabBarController?.tabBar.isHidden = true
+        return newImageView
     }
 
     @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
@@ -94,5 +104,11 @@ extension UIViewController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
+    }
+}
+
+private extension ImagesViewController {
+    func throwToRootController() {
+        self.navigationController!.popToRootViewController(animated: true)
     }
 }

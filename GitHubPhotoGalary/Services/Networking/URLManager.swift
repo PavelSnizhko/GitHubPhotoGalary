@@ -28,9 +28,9 @@ class URLManager {
         urlComponents.host = host
         urlComponents.path = "/login/oauth/authorize"
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: GithubConstants.clientID.rawValue),
-            URLQueryItem(name: "redirect_uri", value: GithubConstants.redirectURI.rawValue),
-            URLQueryItem(name: "scope", value: GithubConstants.scope.rawValue),
+            URLQueryItem(name: "client_id", value: APIConstants.clientID.rawValue),
+            URLQueryItem(name: "redirect_uri", value: APIConstants.redirectURI.rawValue),
+            URLQueryItem(name: "scope", value: APIConstants.scope.rawValue),
             URLQueryItem(name: "state", value: state)
         ]
         

@@ -43,7 +43,7 @@ extension ImagesDataSource: UITableViewDataSource {
         }
         
         print("Стільки буде рядків \(sectionInfo.numberOfObjects)")
-
+        
         return sectionInfo.numberOfObjects
     }
     

@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 class Networking {
     static let shared = Networking()
     

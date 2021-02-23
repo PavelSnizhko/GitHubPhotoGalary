@@ -11,21 +11,23 @@ class TableViewCell: UITableViewCell {
     static let cellId = "TableViewCell"
     @IBOutlet private weak var nameLabel: UILabel!
     
-    @IBOutlet weak var customImageView: UIImageView!
+    @IBOutlet private weak var customImageView: UIImageView!
     
-    var imageModel: ImageEntity? {
+    weak var imageModel: ImageEntity? {
         didSet {
             nameLabel.text = imageModel?.name
             guard let imageData = imageModel?.image  else {
                 customImageView.image = nil
                 return
             }
-            customImageView.image = UIImage(data: imageData, scale:1.0)
+            customImageView.image = UIImage(data: imageData, scale: 1.0)
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.customImageView.contentMode = .scaleAspectFit
+        self.customImageView.clipsToBounds = true
         // Initialization code
     }
 

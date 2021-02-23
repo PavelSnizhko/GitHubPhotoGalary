@@ -29,57 +29,25 @@ class NetworkHelper {
     }
 }
 
-protocol OAthNetworking {
-    
-    func uploadTokenData <Type1: Decodable, Type2: Encodable>(withURL url: URL, tokenData data: Type2, type: Type1.Type, completion: @escaping (Result<Type1, Error>) -> Void)
-}
-
-class OAthNetworkingService: OAthNetworking {
-
-    func uploadTokenData <Type1: Decodable, Type2: Encodable>(withURL url: URL, tokenData data: Type2, type: Type1.Type, completion: @escaping (Result<Type1, Error>) -> Void) {
-        Networking.shared.upload(withURL: url, withData: data) { result in
-            switch result {
-            case .success(let data):
-                do {
-                    let tokenResponseData = try JSONDecoder().decode(type.self, from: data)
-                    DispatchQueue.main.async {
-                        completion(.success(tokenResponseData))
-                    }
-                } catch {
-                    DispatchQueue.main.async {
-                        completion(.failure(error))
-                    }
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    completion(.failure(error))
-                }
-            }
-        }
-    }
-}
-    
 class OAthService {
-    // TODO: create keychain wrapper
-    // make private
-    var state: String?
+    private(set) var state: String?
     private var onAuthenticationResult: ((Result<String, Error>) -> Void)?
     private var oAthNetworkingService: OAthNetworking
     
     init(oAthNetworkingService: OAthNetworking) {
         self.oAthNetworkingService = oAthNetworkingService
+        self.state = UUID().uuidString
     }
     
-    //TODO: change this move state
     func exchangeCodeForToken(url: URL, completion: @escaping (Result<String, Error>) -> Void) {
         guard let code = getCodeFromUrl(url: url), let state = state else {
             return completion(.failure(NetworkError.badURLResponse))
         }
-        let tokenData = TokenData(clientId: GithubConstants.clientID.rawValue,
-                                  clientSecret: GithubConstants.clientSecret.rawValue,
+        let tokenData = TokenData(clientId: APIConstants.clientID.rawValue,
+                                  clientSecret: APIConstants.clientSecret.rawValue,
                                   code: code,
                                   scope: "repo",
-                                  redirectUrl: GithubConstants.redirectURI.rawValue,
+                                  redirectUrl: APIConstants.redirectURI.rawValue,
                                   state: state)
         guard let url = URLManager.getGithubURL() else { return completion(.failure(NetworkError.badURL)) }
         oAthNetworkingService.uploadTokenData(withURL: url, tokenData: tokenData, type: TokenDataResponse.self) { result in
