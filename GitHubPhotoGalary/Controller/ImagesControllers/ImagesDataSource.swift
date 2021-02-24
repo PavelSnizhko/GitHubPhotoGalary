@@ -33,17 +33,13 @@ class ImagesDataSource: UITableViewFetchedResultsController<ImageEntity> {
 
 extension ImagesDataSource: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        
-        return frc.sections?.count ?? 0
+        frc.sections?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let sectionInfo = frc.sections?[section] else {
             return 0
         }
-        
-        print("Стільки буде рядків \(sectionInfo.numberOfObjects)")
-        
         return sectionInfo.numberOfObjects
     }
     

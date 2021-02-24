@@ -2,8 +2,10 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,9 +27,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="adn-I5-wOf">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LLw-gO-Cv7">
                                 <rect key="frame" x="0.0" y="42" width="345" height="222"/>
-                            </imageView>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="adn-I5-wOf">
+                                        <rect key="frame" x="34.5" y="22.5" width="276" height="177.5"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="adn-I5-wOf" firstAttribute="width" secondItem="LLw-gO-Cv7" secondAttribute="width" multiplier="0.8" id="CHP-9f-D4A"/>
+                                    <constraint firstItem="adn-I5-wOf" firstAttribute="centerY" secondItem="LLw-gO-Cv7" secondAttribute="centerY" id="Cdh-IK-uSq"/>
+                                    <constraint firstItem="adn-I5-wOf" firstAttribute="height" secondItem="LLw-gO-Cv7" secondAttribute="height" multiplier="0.8" id="FUe-dp-tqW"/>
+                                    <constraint firstItem="adn-I5-wOf" firstAttribute="centerX" secondItem="LLw-gO-Cv7" secondAttribute="centerX" id="Slw-Ct-3iB"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Q9P-vQ-12D" firstAttribute="height" secondItem="o1D-bN-CYu" secondAttribute="height" multiplier="0.16" id="dqO-nH-Sxg"/>
@@ -49,4 +63,9 @@
             <point key="canvasLocation" x="180.43478260869566" y="24.107142857142858"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -12,7 +12,7 @@ import KeychainAccess
 
 class ImagesViewController: UIViewController {
     private var imageLoader: DataLoaderManager
-    private var imagesTableView = UITableView()
+    private let imagesTableView = UITableView()
     private var dataSource: ImagesDataSource?
     private let context: NSManagedObjectContext = CoreDataStack.shared.container.viewContext
     
@@ -31,10 +31,7 @@ class ImagesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(imagesTableView)
-        self.navigationController?.navigationItem.backBarButtonItem?.isEnabled = false
-        self.navigationItem.setHidesBackButton(true, animated: true)
-        let logoutBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logoutUser))
-        self.navigationItem.rightBarButtonItem  = logoutBarButtonItem
+        configureNavBar()
         self.prepareTableView()
         self.prepareDataSource()
 
@@ -44,18 +41,18 @@ class ImagesViewController: UIViewController {
         super.viewDidLayoutSubviews()
         imagesTableView.frame = view.bounds
     }
-    
-    @objc func logoutUser() {
-         print("clicked")
-        ImageEntity.clearAllCoreData()
-        UserDefaults.standard.set(false, forKey: "activeSession")
-        Keychain(service: ProjectConstants.service)["access-token"] = nil
-        WKWebView.clean {  }
-        throwToRootController()
-    }
 }
 
+// MARK: - private extension
+
 private extension ImagesViewController {
+    func configureNavBar() {
+        self.navigationController?.navigationItem.backBarButtonItem?.isEnabled = false
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        let logoutBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logoutUser))
+        self.navigationItem.rightBarButtonItem  = logoutBarButtonItem
+    }
+    
     func prepareTableView() {
         let nib = UINib(nibName: TableViewCell.cellId, bundle: .main)
         imagesTableView.register(nib, forCellReuseIdentifier: TableViewCell.cellId)
@@ -68,8 +65,20 @@ private extension ImagesViewController {
         imagesTableView.dataSource = dataSource
         imagesTableView.reloadData()
     }
-    
 }
+
+// MARK: - log out
+
+extension ImagesViewController: Logouting {
+    
+    @objc func logoutUser() {
+         print("clicked")
+        logOut()
+        throwToRootController()
+    }
+}
+
+// MARK: - UITableViewDelegate mwthods
 
 extension UIViewController: UITableViewDelegate {
    

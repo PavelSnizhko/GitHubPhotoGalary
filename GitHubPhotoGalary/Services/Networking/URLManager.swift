@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 class URLManager {
 
     static let scheme = "https"

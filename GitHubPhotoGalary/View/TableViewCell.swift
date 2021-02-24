@@ -26,7 +26,7 @@ class TableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.customImageView.contentMode = .scaleAspectFit
+        self.customImageView.contentMode = .scaleAspectFill
         self.customImageView.clipsToBounds = true
         // Initialization code
     }
@@ -34,12 +34,10 @@ class TableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         imageModel = nil
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     

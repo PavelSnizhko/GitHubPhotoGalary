@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 protocol ImageNetworking {
     func loadGithubModels<T: Decodable>(withURL url: URL, token: String?, type: T.Type, completion: @escaping (Result<T, Error>) -> Void)
     func loadImages(withURL string: String, completion: @escaping (Result<Data, Error>) -> Void)

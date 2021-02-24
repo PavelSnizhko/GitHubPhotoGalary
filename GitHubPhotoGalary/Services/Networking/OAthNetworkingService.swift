@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 protocol OAthNetworking {
     
     func uploadTokenData <Type1: Decodable, Type2: Encodable>(withURL url: URL, tokenData data: Type2, type: Type1.Type, completion: @escaping (Result<Type1, Error>) -> Void)

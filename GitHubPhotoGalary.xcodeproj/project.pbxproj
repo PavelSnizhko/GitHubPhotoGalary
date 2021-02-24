@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		AE358D3F25E59ED500F0116C /* WKWebView+Cleaning.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE358D3E25E59ED500F0116C /* WKWebView+Cleaning.swift */; };
 		AE358D4425E5BFC900F0116C /* OAthNetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE358D4325E5BFC900F0116C /* OAthNetworkingService.swift */; };
-		AE3C118325DE6CB70093EB14 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C118225DE6CB70093EB14 /* URL.swift */; };
+		AE3C118325DE6CB70093EB14 /* URL + valueOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C118225DE6CB70093EB14 /* URL + valueOf.swift */; };
 		AE3C118625DE6FB60093EB14 /* TokenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C118525DE6FB60093EB14 /* TokenData.swift */; };
 		AE3C118925DEE5840093EB14 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C118825DEE5840093EB14 /* URLManager.swift */; };
 		AE3C118D25DF88EC0093EB14 /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C118B25DF88EC0093EB14 /* ImagesViewController.swift */; };
@@ -33,7 +33,6 @@
 		AE5E441925DDB20E00AFA3CC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5E441725DDB20E00AFA3CC /* LoginViewController.swift */; };
 		AE5E441A25DDB20E00AFA3CC /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE5E441825DDB20E00AFA3CC /* LoginViewController.xib */; };
 		AE5E441E25DDC37E00AFA3CC /* URLComponentsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5E441D25DDC37D00AFA3CC /* URLComponentsExtension.swift */; };
-		AE5E442325DE357F00AFA3CC /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5E442225DE357F00AFA3CC /* ViewControllerExtension.swift */; };
 		AE9F7C5425E04AB4002A98DD /* AlertingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F7C5325E04AB4002A98DD /* AlertingProtocol.swift */; };
 		AE9F7C5925E058C3002A98DD /* TokenDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F7C5825E058C3002A98DD /* TokenDataResponse.swift */; };
 		AE9F7C6025E05CEC002A98DD /* GithubModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F7C5F25E05CEC002A98DD /* GithubModel.swift */; };
@@ -43,12 +42,13 @@
 		AE9F7C8E25E2754A002A98DD /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F7C8C25E2754A002A98DD /* TableViewCell.swift */; };
 		AE9F7C8F25E2754A002A98DD /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE9F7C8D25E2754A002A98DD /* TableViewCell.xib */; };
 		AE9F7C9925E37B8B002A98DD /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F7C9825E37B8B002A98DD /* CoreDataStack.swift */; };
+		AEF92C7825E639EE008131E5 /* LogoutingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF92C7725E639ED008131E5 /* LogoutingProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AE358D3E25E59ED500F0116C /* WKWebView+Cleaning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKWebView+Cleaning.swift"; sourceTree = "<group>"; };
 		AE358D4325E5BFC900F0116C /* OAthNetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAthNetworkingService.swift; sourceTree = "<group>"; };
-		AE3C118225DE6CB70093EB14 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		AE3C118225DE6CB70093EB14 /* URL + valueOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL + valueOf.swift"; sourceTree = "<group>"; };
 		AE3C118525DE6FB60093EB14 /* TokenData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenData.swift; sourceTree = "<group>"; };
 		AE3C118825DEE5840093EB14 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
 		AE3C118B25DF88EC0093EB14 /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
@@ -74,7 +74,6 @@
 		AE5E441725DDB20E00AFA3CC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AE5E441825DDB20E00AFA3CC /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		AE5E441D25DDC37D00AFA3CC /* URLComponentsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLComponentsExtension.swift; sourceTree = "<group>"; };
-		AE5E442225DE357F00AFA3CC /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		AE9F7C5325E04AB4002A98DD /* AlertingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertingProtocol.swift; sourceTree = "<group>"; };
 		AE9F7C5825E058C3002A98DD /* TokenDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDataResponse.swift; sourceTree = "<group>"; };
 		AE9F7C5F25E05CEC002A98DD /* GithubModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubModel.swift; sourceTree = "<group>"; };
@@ -83,6 +82,7 @@
 		AE9F7C8C25E2754A002A98DD /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		AE9F7C8D25E2754A002A98DD /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		AE9F7C9825E37B8B002A98DD /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		AEF92C7725E639ED008131E5 /* LogoutingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutingProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,8 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				AE5E441D25DDC37D00AFA3CC /* URLComponentsExtension.swift */,
-				AE5E442225DE357F00AFA3CC /* ViewControllerExtension.swift */,
-				AE3C118225DE6CB70093EB14 /* URL.swift */,
+				AE3C118225DE6CB70093EB14 /* URL + valueOf.swift */,
 				AE358D3E25E59ED500F0116C /* WKWebView+Cleaning.swift */,
 			);
 			path = Extension;
@@ -191,6 +190,7 @@
 				AE5E441725DDB20E00AFA3CC /* LoginViewController.swift */,
 				AE9F7C8325E26984002A98DD /* LoginWebViewViewController.swift */,
 				AE518F2F25E395FD002EBB2F /* ImagesControllers */,
+				AEF92C7725E639ED008131E5 /* LogoutingProtocol.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -347,7 +347,7 @@
 				AE5E441925DDB20E00AFA3CC /* LoginViewController.swift in Sources */,
 				AE518F2D25E391B5002EBB2F /* ImagesFRC.swift in Sources */,
 				AE518F3225E39F24002EBB2F /* ImagesDataSource.swift in Sources */,
-				AE5E442325DE357F00AFA3CC /* ViewControllerExtension.swift in Sources */,
+				AEF92C7825E639EE008131E5 /* LogoutingProtocol.swift in Sources */,
 				AE518F2025E38E14002EBB2F /* ImageEntity+CoreDataProperties.swift in Sources */,
 				AE358D3F25E59ED500F0116C /* WKWebView+Cleaning.swift in Sources */,
 				AE9F7C5925E058C3002A98DD /* TokenDataResponse.swift in Sources */,
@@ -356,7 +356,7 @@
 				AE518F3625E3FD96002EBB2F /* ImageNetworkingService.swift in Sources */,
 				AE3C11A025DFE4C90093EB14 /* Networking.swift in Sources */,
 				AE9F7C9925E37B8B002A98DD /* CoreDataStack.swift in Sources */,
-				AE3C118325DE6CB70093EB14 /* URL.swift in Sources */,
+				AE3C118325DE6CB70093EB14 /* URL + valueOf.swift in Sources */,
 				AE5E441425DDA76500AFA3CC /* GithubConstans.swift in Sources */,
 				AE3C118925DEE5840093EB14 /* URLManager.swift in Sources */,
 				AE5E43F725DDA32600AFA3CC /* AppDelegate.swift in Sources */,

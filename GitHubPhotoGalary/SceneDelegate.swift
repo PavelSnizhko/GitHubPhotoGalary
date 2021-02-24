@@ -14,7 +14,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-        // TODO: create additional class and move to static method this lines
         let navigationController = UINavigationController()
         let mainView = LoginViewController()
         navigationController.viewControllers = [mainView]
